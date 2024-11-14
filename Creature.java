@@ -25,7 +25,7 @@ public abstract class Creature
     public Creature (){
         str=10;
         hp=10;
-        max_hp = hp;
+        max_hp = hp; //Sets max_hp to initial hp value
     }
     
     /**
@@ -37,7 +37,9 @@ public abstract class Creature
      * @param hp the health of the creature at the start of the simulation, and the current health levels during battle
      */
     public Creature (int str, int hp) {
-       //implement this
+       this.str = str;
+       this.hp = hp;
+       this.max_hp = hp; //Sets max_hp to the starting hp
     }
     
     
@@ -46,37 +48,42 @@ public abstract class Creature
      * @return a value between 1 and str to be used to cause damage to another creature
      */
     public int attack(){
-        // TODO: implement a damage method
-        return 0;
+        return Randomizer.nextInt(str); //Random damage from 1 to str
     }
     
     
     /**
-     * Is this creature still capable of fighting?
+     * Is this creature still capable of fighting? Checks if its still alive
      * @return true when current hit point level is greater than zero
      */
     public boolean isAlive() {
-        // TODO: implement a method to report if the creature yet lives
-        return false; //change this
+        return hp > 0; 
     }
     
     /**
-     * Is this creature knockedOut?
+     * Is this creature knockedOut? Checks if the creature's hp is less than or equal to zero
      * @return true when current hit point level is less than or equal to zero
      */
     public boolean isKnockedOut() {
-        //TODO: implement a method to report if the creature has been killed
-        return false; //change this
+        return hp <= 0;
     }
     
     
     /**
      * takeDamage receives a value for the amount of damage to subtract from 
-     * the current total of hit points
+     * the current total of hit points,if it hits zero, it's set to zero.
      * @param damage value to remove from hit point count
      */
     public void takeDamage(int damage) {
-        // TODO: implement this
+        hp -= damage; //Reduce hp by damage amount
+        if (hp < 0) hp = 0; //Makes sure that the hp does not go below zero
+    }
+    /**
+     * Get's current hp for the creature.
+     * @return current creature's hp
+     */
+    public int getHealth(){
+        return hp;
     }
     
 }

@@ -1,12 +1,13 @@
 
 
 /**
+ * The human class is the base creature with a given range of hp and strength
+ * Human inherits from Creature.
  * The Human class implements a wrapper for the base Creature class with the following additions
  * Implements a maximum/minimum strength for the creature type [20/5]
  * Implements a maximum/minimum hitpoint total for the creature type [25/5]
- * 
- * @author Bill Crosbie
- * @version 2020-10 v1.0
+ * @author Sebastian Portillo
+ * @version 11/14/24
  */
 public class Human extends Creature
 {
@@ -18,6 +19,7 @@ public class Human extends Creature
 
     /**
      * Constructor for objects of class Human -
+     * creates a human with random stats(strength and hp) based on the given range
      * Note that the calling class does not need to know anything about the 
      * requirements of human minimum and maximum values
      * 
@@ -32,9 +34,11 @@ public class Human extends Creature
         // max and min values to this class only
         // max-min is range of values
         // range + min ensures that the values don't start at one.
+        //This creates a new human with random stats like previously mentioned within the range previously given
         super(
-            Randomizer.nextInt(MAX_HUMAN_HP-MIN_HUMAN_HP)+MIN_HUMAN_HP,    
-            Randomizer.nextInt(MAX_HUMAN_STR-MIN_HUMAN_STR)+MIN_HUMAN_STR
+            Randomizer.nextInt(MAX_HUMAN_STR-MIN_HUMAN_STR)+MIN_HUMAN_STR,
+            Randomizer.nextInt(MAX_HUMAN_HP-MIN_HUMAN_HP)+MIN_HUMAN_HP    
+            
         );
           
     }
